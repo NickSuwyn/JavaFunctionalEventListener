@@ -1,17 +1,20 @@
-package com.functional;
+package com.functional.events.impl;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class EventStore {
+import com.functional.events.Event;
+import com.functional.events.EventStore;
+
+public class EventStoreImpl implements EventStore {
 	
 	private final static Map<String, Event<?>> events = new HashMap<String, Event<?>>();
 	
-	public static void addEvent(String name, Event<?> event) {
+	public void addEvent(String name, Event<?> event) {
 		events.put(name, event);
 	}
 	
-	public static void executeEvent(String name) {
+	public void executeEvent(String name) {
 		events.keySet().stream()
 			.filter(x -> x.equalsIgnoreCase(name))
 			.findFirst()
