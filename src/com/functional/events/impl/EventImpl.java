@@ -3,18 +3,17 @@ package com.functional.events.impl;
 import java.util.function.Consumer;
 
 import com.functional.events.Event;
+import com.functional.events.EventData;
 
-public class EventImpl<T> implements Event<T> {
+public class EventImpl implements Event {
 	
-	private T data;
-	private Consumer<T> action;
+	private Consumer<EventData<?>> action;
 	
-	public EventImpl(T data, Consumer<T> action) {
-		this.data = data;
+	public EventImpl(Consumer<EventData<?>> action) {
 		this.action = action;
 	}
 	
-	public void execute() {
+	public void execute(EventData<?> data) {
 		action.accept(data);
 	}
 

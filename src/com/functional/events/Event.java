@@ -1,7 +1,7 @@
 package com.functional.events;
 
-public interface Event<T> {
+public interface Event {
 	
-	public void execute();
+	public void execute(EventData<?> data);
 
 }
